@@ -86,15 +86,22 @@ Car.prototype.fill = function (gallons) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
-function Baby() {}
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
+}
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return "Playing with " + this.favoriteToy;
+};
 
 /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Global Context (binding): 'this' in this context is reffering to the whole window and shows all the methods and data possible!
+    2. Implicit Binding: 'this' in the implicit binding context is where you can use 'this to show the whole object that it is inside of. Also in this context, if you're calling a method then 'this' is the object to the left of the dot used to call the method.
+    3. New Binding: this is the binding where the 'this' is refering to object that is being instantiated with the new keyword.
+    4. Explicit Binding: Explicit is weird in that you're using a perviously created object and then calling that object, but with a different object's values. So that the 'this' refers to the object being called in the () rather than what is left of the dot.
   */
 
 ///////// END OF CHALLENGE /////////
